@@ -9,16 +9,19 @@ namespace Study3D.MiniGolf
     {
         public GolfBall ball;
         public Vector3 startPosition;
+        public SnowStageManager stageManager;
 
         private void Update()
         {
             if (SimpleInput.GetKeyDown(Key.Digit1))
             {
-                ball.ReturnToLasShotPosition();
+                if (stageManager == null) ball.ReturnToLasShotPosition();
+                else stageManager.ReturnToLastShot();
             }
             if (SimpleInput.GetKeyDown(Key.Digit2))
             {
-                ball.PlaceAt(startPosition);
+                if (stageManager == null) ball.PlaceAt(startPosition);
+                else stageManager.RestartCurrentStage();
             }
         }
     }

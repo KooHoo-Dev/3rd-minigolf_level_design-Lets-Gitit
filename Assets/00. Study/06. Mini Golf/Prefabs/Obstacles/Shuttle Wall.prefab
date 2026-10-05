@@ -70,7 +70,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1133389077533167252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52b4e735c67259741a00fff6e50276ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f10f5b02b6743b6b12cb19119447a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.KinematicShuttle
   offset: {x: 1.6, y: 0, z: 0}

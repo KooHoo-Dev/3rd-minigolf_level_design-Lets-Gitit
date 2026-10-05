@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7394a8a3a7d4491ba645a109bcaf2b3, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfOrbitCamera
 --- !u!114 &13729552
 MonoBehaviour:
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5faf376314848a4bac2ba46b110e813, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfPlainCamera
   target: {fileID: 148657971}
   radius: 5
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -832,7 +832,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 204fcbf40a6676149947a1a5e378000c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfBall
   stopSpeed: 0.1
   stopDelay: 0.3
@@ -847,7 +847,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c8c85f4e0c84ff1a9720c2dc2239c22, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfBallTester
   ball: {fileID: 148657972}
   startPosition: {x: 0, y: 0.13, z: -9}
@@ -898,7 +898,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1759,7 +1759,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2113,7 +2113,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
@@ -2285,7 +2285,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 837007721bf740b78a39b65c5e61063c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfAimIndicator
   minLength: 0
   maxLength: 3
@@ -2621,7 +2621,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3029,7 +3029,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1383412015}
   - component: {fileID: 1383412017}
-  - component: {fileID: 1383412016}
   m_Layer: 0
   m_Name: Cup Trigger
   m_TagString: Untagged
@@ -3052,18 +3051,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1533806255}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1383412016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383412014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bef7518bd53c5840819c835cc2161ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfHole
 --- !u!65 &1383412017
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3276,7 +3263,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3564,13 +3551,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b436cfd0b44546a5962e4776772749ea, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfPlayer
   minPower: 0
   maxPower: 10
   cycleTime: 1
   ball: {fileID: 148657972}
   aimIndicator: {fileID: 820594962}
+  stageManager: {fileID: 4894006491121201699}
 --- !u!1 &1753948293
 GameObject:
   m_ObjectHideFlags: 0
@@ -3815,7 +3803,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3958,3 +3946,77 @@ SceneRoots:
   - {fileID: 1753948294}
   - {fileID: 90129010}
   - {fileID: 112116053}
+
+--- !u!114 &6683771829612740587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148657965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b105e84761f41db8f8ff260ee7d45c7, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowballPlayer
+  initialSize: 1
+  minimumSize: 1
+  rollingGrowthLimit: 3
+  maximumSize: 8
+  growthPerMeter: 0.1
+  stageManager: {fileID: 4894006491121201699}
+--- !u!114 &5054767106596631954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38166196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51d43e3f3d84c3ca1569e8dac88edb2, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowGrowthSurface
+--- !u!114 &4894006491121201699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164405190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d515e5ca584d00b7ae0e5c63fd0da2, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowStageManager
+  player: {fileID: 6683771829612740587}
+  golfPlayer: {fileID: 1722979013}
+  golfCamera: {fileID: 13729552}
+  stages:
+  - title: 1. 눈덩이를 굴려라
+    stageRoot: {fileID: 0}
+    startPoint: {fileID: 33843928}
+    goal: {fileID: 0}
+    boss: {fileID: 0}
+    obstacles: []
+    pickups: []
+    heatAttacks: []
+    snowSupplies: []
+  - title: 2. 크게 키워라
+    stageRoot: {fileID: 0}
+    startPoint: {fileID: 33843928}
+    goal: {fileID: 0}
+    boss: {fileID: 0}
+    obstacles: []
+    pickups: []
+    heatAttacks: []
+    snowSupplies: []
+  - title: 3. 나무 보스
+    stageRoot: {fileID: 0}
+    startPoint: {fileID: 33843928}
+    goal: {fileID: 0}
+    boss: {fileID: 0}
+    obstacles: []
+    pickups: []
+    heatAttacks: []
+    snowSupplies: []

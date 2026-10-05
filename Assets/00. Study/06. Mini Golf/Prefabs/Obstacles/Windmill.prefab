@@ -645,7 +645,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7946614707606418674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d21efdaa1275194cb28be57c27bfcc4, type: 3}
+  m_Script: {fileID: 11500000, guid: 16223778ac79426d999866533280d433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.KinematicSpinner
   axis: {x: 0, y: 0, z: 1}

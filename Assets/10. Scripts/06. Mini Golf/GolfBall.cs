@@ -21,6 +21,8 @@ namespace Study3D.MiniGolf
         private float slowTime;
 
         public bool IsStopped => (shotRequested == false) && slowTime >= stopDelay;
+
+        public Rigidbody Body => rBody;
         
         private void Awake()
         {
@@ -40,7 +42,14 @@ namespace Study3D.MiniGolf
             }
 
             if (rBody.linearVelocity.magnitude < stopSpeed)
+            {
                 slowTime += Time.fixedDeltaTime;
+                if (slowTime >= stopDelay)
+                {
+                    rBody.linearVelocity = Vector3.zero;
+                    rBody.angularVelocity = Vector3.zero;
+                }
+            }
             else
                 slowTime = 0;
         }
@@ -51,6 +60,7 @@ namespace Study3D.MiniGolf
             shotRequested = true;
             shotVelocity = direction * power;
             lastPosition = transform.position;
+            slowTime = 0f;
         }
 
         // 공을 position의 위치로 옮기고
@@ -81,6 +91,7 @@ namespace Study3D.MiniGolf
         {
             lastPosition = position;
             Teleport(position);
+            slowTime = stopDelay;
         }
     }
 }

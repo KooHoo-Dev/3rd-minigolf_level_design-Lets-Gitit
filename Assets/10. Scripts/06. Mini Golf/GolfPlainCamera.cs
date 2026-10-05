@@ -7,6 +7,7 @@ namespace Study3D.MiniGolf
     {
         [Header("Target")]
         public Transform target;
+        public SnowballPlayer snowball;
 
         [Header("Settings")] 
         [SerializeField] private float radius; // 반지름 : taget과의 거리가 됩니다. 
@@ -17,6 +18,7 @@ namespace Study3D.MiniGolf
         [SerializeField] private float maxPitch; // x축 회전 최대값
         [SerializeField] private float followSpeed; // target을 따라가는 속도
         [SerializeField] private Vector3 offset;
+        [SerializeField] private float sizeZoom = 0.35f;
 
         private Vector3 trackedPoint;
 
@@ -66,7 +68,7 @@ namespace Study3D.MiniGolf
             // 위치좌표가 생성(offset)됩니다.
             
             Quaternion camRotation = Quaternion.Euler(pitch, yaw, 0); // 나(카메라)의 현재 회전량
-            Vector3 distance = new Vector3(0f, 0f, -radius) + offset; // 궤도의 반지름 + offset
+            Vector3 distance = new Vector3(0f, 0f, -CameraRadius) + offset; // 궤도의 반지름 + offset
             // 나의 회전량으로부터 궤도의 반지름 만큼 떨어진 궤도 위치좌표
             Vector3 orbitPoint = camRotation * distance ; 
             
@@ -79,5 +81,16 @@ namespace Study3D.MiniGolf
             //transform.rotation = Quaternion.LookRotation(toTarget, Vector3.up);
             transform.LookAt(target);
         }
+
+        public void SnapToTarget()
+        {
+            if (target == null) return;
+            trackedPoint = target.position;
+            Quaternion camRotation = Quaternion.Euler(pitch, yaw, 0);
+            transform.position = trackedPoint + camRotation * (new Vector3(0f, 0f, -CameraRadius) + offset);
+            transform.LookAt(target);
+        }
+
+        private float CameraRadius => radius + (snowball != null ? Mathf.Max(0f, snowball.Size - 1f) * sizeZoom : 0f);
     }
 }

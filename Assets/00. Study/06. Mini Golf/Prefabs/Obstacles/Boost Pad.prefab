@@ -63,7 +63,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6372318686000593069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffcaefe08d5ad6e4c9f7816f70d39fd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 039b03182333487093e695be8c6f6741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.BoostPad
   direction: {x: 0, y: 0, z: 1}
@@ -201,8 +201,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8707915523546049517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc4ee1d4bc4713b42bfa81dac51df2fc, type: 3}
+  m_Script: {fileID: 11500000, guid: e97597f74511464fa75f52fd22eb04cc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.Common.TextureOffsetScroller
+  m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.TextureOffsetScroller
   speed: {x: 0, y: -1.5}
   textureProperty: _BaseMap

@@ -15,6 +15,7 @@ namespace Study3D.MiniGolf
         [Header("Ref")] 
         public GolfBall ball;
         public GolfAimIndicator aimIndicator;
+        public SnowStageManager stageManager;
         
         private float chargeTime;
         private Camera mainCam;
@@ -31,7 +32,7 @@ namespace Study3D.MiniGolf
             aimDirection.y = 0.0f;
             aimDirection.Normalize();
 
-            bool canShoot = ball.IsStopped;
+            bool canShoot = ball.IsStopped && (stageManager == null || stageManager.CanShoot);
 
             if (canShoot)
             {
@@ -44,7 +45,8 @@ namespace Study3D.MiniGolf
                 else if (SimpleInput.GetKeyUp(Key.Space)) // 입력 전달
                 {
                     float power = Mathf.Lerp(minPower, maxPower, power01);
-                    ball.Shoot(aimDirection, power);
+                    if (stageManager == null || stageManager.TryRegisterShot())
+                        ball.Shoot(aimDirection, power);
                     chargeTime = 0.0f;
                     power01 = 0.0f;
                 }
@@ -59,9 +61,18 @@ namespace Study3D.MiniGolf
         private void UpdateFeedback(Vector3 direction, bool canShoot)
         {
             if (canShoot)
+            {
                 aimIndicator.Show(ball.transform.position, direction, power01);
+                aimIndicator.gameObject.SetActive(true);
+            }
             else
                 aimIndicator.Hide();
+        }
+
+        public void ClearCharge()
+        {
+            chargeTime = 0f;
+            power01 = 0f;
         }
     }
 }

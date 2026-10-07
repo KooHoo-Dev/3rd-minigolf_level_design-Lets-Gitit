@@ -417,6 +417,7 @@ MonoBehaviour:
   landingPoints:
   - {fileID: 116910053}
   - {fileID: 1954705585}
+  arenaBounds: {fileID: 573071156}
   landingMarkerPrefab: {fileID: 5984348778801909272, guid: f868a20ba82a1dc468bcb2d1c69b12d1, type: 3}
   dropPeriodically: 1
   interval: 11
@@ -472,13 +473,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowHeatAttack
   stageManager: {fileID: 0}
   boss: {fileID: 0}
+  arenaBounds: {fileID: 573071156}
   targetPositions:
   - {fileID: 135418186}
   - {fileID: 969504185}
   - {fileID: 1582121923}
   warningVisual: {fileID: 1112028711}
   radius: 3.2
-  interval: 11
+  interval: 8
   warningDuration: 2
   activeDuration: 2.5
 --- !u!135 &199802734
@@ -3529,6 +3531,10 @@ PrefabInstance:
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 963416410268928929, guid: b6f5e7659ddd4bf881c872017b20c3b5, type: 3}
+      propertyPath: requiredSize
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 963416410268928929, guid: b6f5e7659ddd4bf881c872017b20c3b5, type: 3}
       propertyPath: preserveSpeedOnBreak
       value: 1
       objectReference: {fileID: 0}
@@ -5276,6 +5282,10 @@ PrefabInstance:
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 963416410268928929, guid: b6f5e7659ddd4bf881c872017b20c3b5, type: 3}
+      propertyPath: requiredSize
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 963416410268928929, guid: b6f5e7659ddd4bf881c872017b20c3b5, type: 3}
       propertyPath: preserveSpeedOnBreak
       value: 1
       objectReference: {fileID: 0}
@@ -6051,6 +6061,10 @@ PrefabInstance:
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 963416410268928929, guid: b6f5e7659ddd4bf881c872017b20c3b5, type: 3}
+      propertyPath: requiredSize
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 963416410268928929, guid: b6f5e7659ddd4bf881c872017b20c3b5, type: 3}
       propertyPath: preserveSpeedOnBreak
       value: 1
       objectReference: {fileID: 0}
@@ -6717,14 +6731,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963897622}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: 24}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 8.001535, y: 0, z: 23.81856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2200000113}
   m_Father: {fileID: 855791970}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1963897625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7031,6 +7045,10 @@ PrefabInstance:
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 963416410268928929, guid: b6f5e7659ddd4bf881c872017b20c3b5, type: 3}
+      propertyPath: requiredSize
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 963416410268928929, guid: b6f5e7659ddd4bf881c872017b20c3b5, type: 3}
       propertyPath: preserveSpeedOnBreak
       value: 1
       objectReference: {fileID: 0}
@@ -7113,7 +7131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 963416410268928929, guid: b6f5e7659ddd4bf881c872017b20c3b5, type: 3}
       propertyPath: requiredSize
-      value: 0.7
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 963416410268928929, guid: b6f5e7659ddd4bf881c872017b20c3b5, type: 3}
       propertyPath: preserveSpeedOnBreak
@@ -7219,6 +7237,7 @@ MonoBehaviour:
   landingPoints:
   - {fileID: 421051632}
   - {fileID: 1559617099}
+  arenaBounds: {fileID: 573071156}
   landingMarkerPrefab: {fileID: 5984348778801909272, guid: f868a20ba82a1dc468bcb2d1c69b12d1, type: 3}
   dropPeriodically: 0
   interval: 0
@@ -7831,7 +7850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5493245338308798680, guid: ecee432a409f4f5aba5fcd0b4ee1e939, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5493245338308798680, guid: ecee432a409f4f5aba5fcd0b4ee1e939, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7839,7 +7858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5493245338308798680, guid: ecee432a409f4f5aba5fcd0b4ee1e939, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 26.0
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 5493245338308798680, guid: ecee432a409f4f5aba5fcd0b4ee1e939, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7912,7 +7931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5493245338308798680, guid: ecee432a409f4f5aba5fcd0b4ee1e939, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5493245338308798680, guid: ecee432a409f4f5aba5fcd0b4ee1e939, type: 3}
       propertyPath: m_LocalPosition.y

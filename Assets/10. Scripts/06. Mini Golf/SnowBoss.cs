@@ -104,6 +104,10 @@ namespace Study3D.MiniGolf
                     launchDirection = transform.forward;
                 stageManager.DefeatBoss(this, launchDirection);
             }
+            else
+            {
+                stageManager.TriggerBossHitHeatAttack();
+            }
         }
 
         private IEnumerator HitReaction()

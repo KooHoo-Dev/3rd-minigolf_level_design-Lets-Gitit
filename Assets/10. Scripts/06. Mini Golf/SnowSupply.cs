@@ -10,6 +10,7 @@ namespace Study3D.MiniGolf
         public GameObject snowballPrefab;
         public Transform launchPoint;
         public Transform[] landingPoints;
+        public BoxCollider arenaBounds;
         public GameObject landingMarkerPrefab;
         public bool dropPeriodically;
         public float interval = 14f;
@@ -20,7 +21,6 @@ namespace Study3D.MiniGolf
         public int maximumActiveSnowballs = 5;
 
         private readonly List<SnowPickup> activeSnowballs = new List<SnowPickup>();
-        private int nextLandingPoint;
 
         public void Begin()
         {
@@ -82,8 +82,12 @@ namespace Study3D.MiniGolf
 
         private Transform ChooseLandingPoint()
         {
-            Transform target = landingPoints[nextLandingPoint % landingPoints.Length];
-            nextLandingPoint++;
+            Transform target = landingPoints[Random.Range(0, landingPoints.Length)];
+            Bounds bounds = arenaBounds.bounds;
+            Vector3 position = target.position;
+            position.x = Random.Range(bounds.min.x + 1f, bounds.max.x - 1f);
+            position.z = Random.Range(bounds.min.z + 1f, bounds.max.z - 1f);
+            target.position = position;
             return target;
         }
 
@@ -93,7 +97,6 @@ namespace Study3D.MiniGolf
             foreach (SnowPickup snowball in activeSnowballs)
                 if (snowball != null) Destroy(snowball.gameObject);
             activeSnowballs.Clear();
-            nextLandingPoint = 0;
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Study3D.MiniGolf
         private GolfBall golfBall;
         private Vector3 initialScale;
         private Vector3 previousPosition;
+        private Vector3 velocityBeforeCollision;
         private Vector3 lastShotPosition;
         private float lastShotSize;
         private float size;
@@ -51,23 +52,28 @@ namespace Study3D.MiniGolf
 
             touchedSnow = false;
             previousPosition = body.position;
+            velocityBeforeCollision = body.linearVelocity;
         }
 
         private void OnCollisionStay(Collision collision)
         {
+            KeepBallOnGround(collision);
+
             if (collision.collider.GetComponentInParent<SnowGrowthSurface>() != null)
                 touchedSnow = true;
 
             SnowBreakable obstacle = collision.collider.GetComponentInParent<SnowBreakable>();
             if (obstacle != null)
-                obstacle.TryBreak(this);
+                obstacle.TryBreak(this, velocityBeforeCollision);
         }
 
         private void OnCollisionEnter(Collision collision)
         {
+            KeepBallOnGround(collision);
+
             SnowBreakable obstacle = collision.collider.GetComponentInParent<SnowBreakable>();
             if (obstacle != null)
-                obstacle.TryBreak(this);
+                obstacle.TryBreak(this, velocityBeforeCollision);
 
             SnowBoss boss = collision.collider.GetComponentInParent<SnowBoss>();
             if (boss != null)
@@ -76,6 +82,22 @@ namespace Study3D.MiniGolf
             SnowGoalTree goal = collision.collider.GetComponentInParent<SnowGoalTree>();
             if (goal != null)
                 goal.TryRescue(this);
+        }
+
+        private void KeepBallOnGround(Collision collision)
+        {
+            if (body.linearVelocity.y <= 0f) return;
+
+            for (int i = 0; i < collision.contactCount; i++)
+            {
+                if (collision.GetContact(i).normal.y > 0.5f)
+                {
+                    Vector3 velocity = body.linearVelocity;
+                    velocity.y = 0f;
+                    body.linearVelocity = velocity;
+                    return;
+                }
+            }
         }
 
         public void CaptureLastShot()

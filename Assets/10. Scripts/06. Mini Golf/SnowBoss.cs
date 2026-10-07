@@ -10,7 +10,7 @@ namespace Study3D.MiniGolf
         public float maximumHealth = 100f;
         public float damagePerSize = 20f;
         public float hitReactionDuration = 0.25f;
-        public float hitKnockbackSpeed = 8f;
+        public float hitKnockbackSpeed = 24f;
         public float defeatedColorValue = 0.3f;
 
         private float health;

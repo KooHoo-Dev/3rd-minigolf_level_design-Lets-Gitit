@@ -32,6 +32,7 @@ namespace Study3D.MiniGolf
         public SnowballPlayer player;
         public GolfPlayer golfPlayer;
         public GolfPlainCamera golfCamera;
+        public int startingStage = 1;
         public SnowGolfStage[] stages =
         {
             new SnowGolfStage { title = "1. 눈덩이를 굴려라" },
@@ -60,7 +61,7 @@ namespace Study3D.MiniGolf
             golfCamera.snowball = player;
             GolfBallTester tester = FindFirstObjectByType<GolfBallTester>();
             if (tester != null) tester.stageManager = this;
-            StartStage(0);
+            StartStage(startingStage - 1);
         }
 
         private void Update()

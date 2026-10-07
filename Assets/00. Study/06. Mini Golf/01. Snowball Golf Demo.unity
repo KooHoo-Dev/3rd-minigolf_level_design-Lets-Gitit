@@ -1233,6 +1233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
+  preserveSpeedOnBreak: 0
   requiredSize: 1.75
   sizeCost: 1.2
   breakEffect: {fileID: 0}
@@ -1954,6 +1955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
+  preserveSpeedOnBreak: 0
   requiredSize: 1.6
   sizeCost: 1.1
   breakEffect: {fileID: 0}
@@ -2435,8 +2437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b436cfd0b44546a5962e4776772749ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfPlayer
-  minPower: 4
-  maxPower: 16
+  minPower: 12
+  maxPower: 48
   cycleTime: 0.6
   ball: {fileID: 1968592124}
   aimIndicator: {fileID: 1037796489}
@@ -2456,6 +2458,7 @@ MonoBehaviour:
   player: {fileID: 1968592126}
   golfPlayer: {fileID: 378638406}
   golfCamera: {fileID: 1026130200}
+  startingStage: 1
   stages:
   - title: "1. \uB208\uB369\uC774\uB97C \uAD74\uB824\uB77C"
     stageRoot: {fileID: 855791969}
@@ -3093,7 +3096,7 @@ GameObject:
   - component: {fileID: 433534120}
   - component: {fileID: 433534121}
   m_Layer: 0
-  m_Name: Small Snow Fence
+  m_Name: Weak Snow Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3134,6 +3137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
+  preserveSpeedOnBreak: 1
   requiredSize: 0.725
   sizeCost: 0
   breakEffect: {fileID: 0}
@@ -5432,6 +5436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
+  preserveSpeedOnBreak: 0
   requiredSize: 2
   sizeCost: 1.4
   breakEffect: {fileID: 0}
@@ -5487,6 +5492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
+  preserveSpeedOnBreak: 0
   requiredSize: 1
   sizeCost: 0
   breakEffect: {fileID: 0}
@@ -8230,6 +8236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
+  preserveSpeedOnBreak: 0
   requiredSize: 1
   sizeCost: 0
   breakEffect: {fileID: 0}
@@ -9798,6 +9805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
+  preserveSpeedOnBreak: 0
   requiredSize: 1.2
   sizeCost: 0
   breakEffect: {fileID: 0}
@@ -10174,7 +10182,7 @@ MonoBehaviour:
   maximumHealth: 220
   damagePerSize: 18
   hitReactionDuration: 0.25
-  hitKnockbackSpeed: 8
+  hitKnockbackSpeed: 24
   defeatedColorValue: 0.3
 --- !u!65 &1437906281
 BoxCollider:
@@ -10818,6 +10826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
+  preserveSpeedOnBreak: 0
   requiredSize: 1.25
   sizeCost: 0
   breakEffect: {fileID: 0}
@@ -13316,6 +13325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1868558766}
   - component: {fileID: 1868558765}
+  - component: {fileID: 1868558767}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -13403,6 +13413,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1868558767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868558764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &1879320554
 GameObject:
   m_ObjectHideFlags: 0
@@ -16187,23 +16226,18 @@ PrefabInstance:
       value: Growth Zone A
       objectReference: {fileID: 0}
     - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
       propertyPath: m_LocalScale.z
       value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
---- !u!4 &2200000101 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-  m_PrefabInstance: {fileID: 2200000001}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2200000002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16217,23 +16251,18 @@ PrefabInstance:
       value: Growth Zone B
       objectReference: {fileID: 0}
     - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 14.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
       propertyPath: m_LocalScale.z
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
---- !u!4 &2200000102 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-  m_PrefabInstance: {fileID: 2200000002}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2200000003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16247,23 +16276,18 @@ PrefabInstance:
       value: Growth Zone C
       objectReference: {fileID: 0}
     - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
       propertyPath: m_LocalScale.z
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 27
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
---- !u!4 &2200000103 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-  m_PrefabInstance: {fileID: 2200000003}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2200000004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16277,23 +16301,18 @@ PrefabInstance:
       value: Growth Zone A
       objectReference: {fileID: 0}
     - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
       propertyPath: m_LocalScale.z
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
---- !u!4 &2200000104 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-  m_PrefabInstance: {fileID: 2200000004}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2200000005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16307,23 +16326,18 @@ PrefabInstance:
       value: Growth Zone B
       objectReference: {fileID: 0}
     - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
       propertyPath: m_LocalScale.z
       value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
---- !u!4 &2200000105 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-  m_PrefabInstance: {fileID: 2200000005}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2200000006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16337,23 +16351,18 @@ PrefabInstance:
       value: Growth Zone C
       objectReference: {fileID: 0}
     - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
       propertyPath: m_LocalScale.z
       value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 33
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
---- !u!4 &2200000106 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-  m_PrefabInstance: {fileID: 2200000006}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2200000007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16367,23 +16376,18 @@ PrefabInstance:
       value: Growth Zone A
       objectReference: {fileID: 0}
     - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 9.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
       propertyPath: m_LocalScale.z
       value: 11.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
---- !u!4 &2200000107 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-  m_PrefabInstance: {fileID: 2200000007}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2200000008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16397,23 +16401,18 @@ PrefabInstance:
       value: Growth Zone B
       objectReference: {fileID: 0}
     - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 25.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
---- !u!4 &2200000108 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-  m_PrefabInstance: {fileID: 2200000008}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2200000009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16427,18 +16426,58 @@ PrefabInstance:
       value: Growth Zone C
       objectReference: {fileID: 0}
     - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 33.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 33.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+--- !u!4 &2200000101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2200000102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2200000103 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2200000104 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2200000105 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000005}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2200000106 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2200000107 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2200000108 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000008}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2200000109 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
@@ -16448,10 +16487,10 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1026130204}
   - {fileID: 1868558766}
   - {fileID: 1968592125}
   - {fileID: 1037796491}
-  - {fileID: 1026130204}
   - {fileID: 378638408}
   - {fileID: 855791970}
   - {fileID: 921483696}

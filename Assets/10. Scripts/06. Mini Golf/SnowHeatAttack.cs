@@ -59,7 +59,7 @@ namespace Study3D.MiniGolf
                 if (warningVisual != null)
                 {
                     warningVisual.position = target.position;
-                    warningVisual.localScale = Vector3.one * radius * 2f;
+                    warningVisual.localScale = new Vector3(radius * 2f, warningVisual.localScale.y, radius * 2f);
                     warningVisual.gameObject.SetActive(true);
                 }
 

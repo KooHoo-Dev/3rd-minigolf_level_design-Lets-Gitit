@@ -57,6 +57,10 @@ namespace Study3D.MiniGolf
         {
             if (collision.collider.GetComponentInParent<SnowGrowthSurface>() != null)
                 touchedSnow = true;
+
+            SnowBreakable obstacle = collision.collider.GetComponentInParent<SnowBreakable>();
+            if (obstacle != null)
+                obstacle.TryBreak(this);
         }
 
         private void OnCollisionEnter(Collision collision)

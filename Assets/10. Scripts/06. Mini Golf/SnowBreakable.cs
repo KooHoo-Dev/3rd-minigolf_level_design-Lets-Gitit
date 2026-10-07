@@ -30,7 +30,7 @@ namespace Study3D.MiniGolf
 
         public void TryBreak(SnowballPlayer player)
         {
-            if (broken || !canBreak || !player.IsMoving || player.Size < requiredSize) return;
+            if (broken || !canBreak || player.Size < requiredSize) return;
 
             broken = true;
             player.ChangeSize(-sizeCost);

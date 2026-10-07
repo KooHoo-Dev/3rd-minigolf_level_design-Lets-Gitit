@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/00. Study/06. Mini Golf/00. Obstacle Lab.unity
-    guid: 37032905b53259844a900aef274e3f56
+    path: Assets/00. Study/06. Mini Golf/01. Snowball Golf Demo.unity
+    guid: afb05c9ed07276d46a8f1bd89351684e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -16,6 +16,8 @@ namespace Study3D.MiniGolf
         private float health;
         private int lastDamagingShot = -1;
         private bool defeated;
+        private Animator animator;
+        private Rigidbody body;
         private Renderer[] renderers;
         private Color[][] originalColors;
         private Vector3 initialPosition;
@@ -26,6 +28,10 @@ namespace Study3D.MiniGolf
 
         private void Awake()
         {
+            animator = GetComponentInChildren<Animator>();
+            body = GetComponent<Rigidbody>();
+            if (body == null)
+                body = gameObject.AddComponent<Rigidbody>();
             initialPosition = transform.localPosition;
             initialRotation = transform.localRotation;
             renderers = GetComponentsInChildren<Renderer>();
@@ -45,8 +51,14 @@ namespace Study3D.MiniGolf
             health = maximumHealth;
             defeated = false;
             lastDamagingShot = -1;
+            body.isKinematic = false;
+            body.useGravity = false;
+            body.linearVelocity = Vector3.zero;
+            body.angularVelocity = Vector3.zero;
             transform.localPosition = initialPosition;
             transform.localRotation = initialRotation;
+            body.isKinematic = true;
+            SetPatternAttacking(false);
             SetColor(0.45f);
             foreach (Collider bossCollider in GetComponentsInChildren<Collider>())
                 bossCollider.enabled = true;
@@ -55,6 +67,15 @@ namespace Study3D.MiniGolf
         public void BeginBattle()
         {
             SetColor(1f);
+        }
+
+        public void SetPatternAttacking(bool attacking)
+        {
+            if (attacking && defeated) return;
+
+            animator.ResetTrigger("Idle2");
+            animator.ResetTrigger("Jump");
+            animator.SetTrigger(attacking ? "Jump" : "Idle2");
         }
 
         public void TryHit(SnowballPlayer player)
@@ -78,7 +99,10 @@ namespace Study3D.MiniGolf
             if (health <= 0f)
             {
                 defeated = true;
-                stageManager.DefeatBoss(this);
+                Vector3 launchDirection = -knockbackDirection.normalized;
+                if (launchDirection.sqrMagnitude < 0.01f)
+                    launchDirection = transform.forward;
+                stageManager.DefeatBoss(this, launchDirection);
             }
         }
 
@@ -103,13 +127,21 @@ namespace Study3D.MiniGolf
             }
         }
 
-        public void Defeat()
+        public void Defeat(Vector3 launchDirection)
         {
             defeated = true;
             StopAllCoroutines();
             SetColor(defeatedColorValue);
             foreach (Collider bossCollider in GetComponentsInChildren<Collider>())
                 bossCollider.enabled = false;
+
+            animator.Play("Jump_Emperor", 0, 0f);
+            body.isKinematic = false;
+            body.useGravity = true;
+            body.linearVelocity = Vector3.zero;
+            body.angularVelocity = Vector3.zero;
+            body.AddForce(launchDirection * 20f + Vector3.up * 14f, ForceMode.VelocityChange);
+            body.AddTorque(new Vector3(12f, 0f, 18f), ForceMode.VelocityChange);
         }
     }
 }

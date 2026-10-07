@@ -9,7 +9,6 @@ namespace Study3D.MiniGolf
         Rescuing,
         StageCleared,
         Transitioning,
-        Failed,
         GameCompleted
     }
 
@@ -37,7 +36,7 @@ namespace Study3D.MiniGolf
         {
             new SnowGolfStage { title = "1. 눈덩이를 굴려라" },
             new SnowGolfStage { title = "2. 크게 키워라" },
-            new SnowGolfStage { title = "3. 나무 보스" }
+            new SnowGolfStage { title = "3. 펭귄 보스" }
         };
 
         private int currentStageIndex;
@@ -87,25 +86,10 @@ namespace Study3D.MiniGolf
             heatWarningTime = remainingTime;
         }
 
-        public void HitByHeat(SnowballPlayer target, float sizeLoss)
+        public void HitByHeat(SnowballPlayer target)
         {
             if (!CanShoot) return;
-            if (target.Size <= target.MinimumSize)
-            {
-                state = SnowStageState.Failed;
-                golfPlayer.ClearCharge();
-                StopStageEvents(stages[currentStageIndex]);
-                StartCoroutine(RestartAfterFailure());
-                return;
-            }
-
-            target.ChangeSize(-sizeLoss);
-        }
-
-        private IEnumerator RestartAfterFailure()
-        {
-            yield return new WaitForSeconds(1.25f);
-            RestartCurrentStage();
+            target.ChangeSize(target.InitialSize - target.Size);
         }
 
         public void ReturnToLastShot()
@@ -130,13 +114,13 @@ namespace Study3D.MiniGolf
             state = SnowStageState.StageCleared;
         }
 
-        public void DefeatBoss(SnowBoss boss)
+        public void DefeatBoss(SnowBoss boss, Vector3 launchDirection)
         {
             if (!CanShoot || stages[currentStageIndex].boss != boss) return;
             state = SnowStageState.Transitioning;
             golfPlayer.ClearCharge();
             StopStageEvents(stages[currentStageIndex]);
-            boss.Defeat();
+            boss.Defeat(launchDirection);
             StartCoroutine(CompleteGame());
         }
 
@@ -144,6 +128,7 @@ namespace Study3D.MiniGolf
         {
             SnowGoalTree goal = stages[currentStageIndex].goal;
             if (goal != null) yield return goal.Rescue();
+            else yield return new WaitForSeconds(1.5f);
             state = SnowStageState.GameCompleted;
         }
 
@@ -198,6 +183,7 @@ namespace Study3D.MiniGolf
             foreach (SnowHeatAttack heat in stage.heatAttacks)
             {
                 heat.stageManager = this;
+                heat.boss = stage.boss;
                 heat.ResetPattern();
                 heat.StartPattern();
             }
@@ -251,7 +237,7 @@ namespace Study3D.MiniGolf
 
             if (stage.boss != null && currentStageIndex == stages.Length - 1)
             {
-                GUI.Box(new Rect(18, 168, 300, 55), $"나무 보스  {stage.boss.Health:F0} / {stage.boss.maximumHealth:F0}");
+                GUI.Box(new Rect(18, 168, 300, 55), $"펭귄 보스  {stage.boss.Health:F0} / {stage.boss.maximumHealth:F0}");
                 GUI.Box(new Rect(34, 199, 260, 16), "");
                 GUI.color = new Color(0.7f, 0.25f, 0.2f);
                 GUI.DrawTexture(new Rect(36, 201, 256 * stage.boss.HealthRatio, 12), Texture2D.whiteTexture);
@@ -285,8 +271,7 @@ namespace Study3D.MiniGolf
             {
                 case SnowStageState.Rescuing: return "동료 눈덩이를 구출하는 중…";
                 case SnowStageState.StageCleared: return "스테이지 완료!";
-                case SnowStageState.Transitioning: return "나무 몬스터 격파!";
-                case SnowStageState.Failed: return "눈덩이가 너무 작아요. 스테이지를 다시 시작합니다.";
+                case SnowStageState.Transitioning: return "펭귄 보스 격파!";
                 case SnowStageState.GameCompleted: return "눈덩이 마을을 구했습니다!";
                 default: return "";
             }

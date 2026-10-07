@@ -67,7 +67,7 @@ namespace Study3D.MiniGolf
             GameObject instance = Instantiate(snowballPrefab, start, Quaternion.identity);
             SnowPickup pickup = instance.GetComponent<SnowPickup>();
             pickup.growthAmount = growthAmount;
-            pickup.PrepareToFall(GetFlightVelocity(start, landingPoint.position));
+            pickup.PrepareToFall(GetFlightVelocity(start, landingPoint.position), landingPoint.position);
             activeSnowballs.Add(pickup);
         }
 

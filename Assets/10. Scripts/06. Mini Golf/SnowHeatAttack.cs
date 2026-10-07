@@ -8,26 +8,39 @@ namespace Study3D.MiniGolf
     public class SnowHeatAttack : MonoBehaviour
     {
         public SnowStageManager stageManager;
+        public SnowBoss boss;
         public Transform[] targetPositions;
         public Transform warningVisual;
-        public float radius = 2f;
+        public float radius = 3.2f;
         public float interval = 12f;
         public float warningDuration = 2f;
         public float activeDuration = 3f;
-        public float sizeLoss = 0.175f;
 
         private readonly HashSet<SnowballPlayer> hitPlayers = new HashSet<SnowballPlayer>();
-        private SphereCollider attackCollider;
+        private SphereCollider[] attackColliders;
+        private Transform[] warningVisuals;
         private bool isHot;
-        private int nextPosition;
 
         private void Awake()
         {
-            attackCollider = GetComponent<SphereCollider>();
-            attackCollider.isTrigger = true;
-            attackCollider.radius = radius;
-            attackCollider.enabled = false;
-            if (warningVisual != null) warningVisual.gameObject.SetActive(false);
+            attackColliders = new SphereCollider[targetPositions.Length];
+            warningVisuals = new Transform[targetPositions.Length];
+            attackColliders[0] = GetComponent<SphereCollider>();
+            warningVisuals[0] = warningVisual;
+
+            for (int i = 0; i < targetPositions.Length; i++)
+            {
+                if (i > 0)
+                {
+                    attackColliders[i] = gameObject.AddComponent<SphereCollider>();
+                    warningVisuals[i] = Instantiate(warningVisual, warningVisual.position, warningVisual.rotation, warningVisual.parent);
+                }
+
+                attackColliders[i].isTrigger = true;
+                attackColliders[i].radius = radius;
+                attackColliders[i].enabled = false;
+                warningVisuals[i].gameObject.SetActive(false);
+            }
         }
 
         public void StartPattern()
@@ -40,8 +53,11 @@ namespace Study3D.MiniGolf
         {
             StopAllCoroutines();
             isHot = false;
-            attackCollider.enabled = false;
-            if (warningVisual != null) warningVisual.gameObject.SetActive(false);
+            foreach (SphereCollider attackCollider in attackColliders)
+                attackCollider.enabled = false;
+            if (boss != null) boss.SetPatternAttacking(false);
+            foreach (Transform visual in warningVisuals)
+                visual.gameObject.SetActive(false);
             if (stageManager != null) stageManager.SetHeatCue(this, 0f);
         }
 
@@ -50,17 +66,15 @@ namespace Study3D.MiniGolf
             while (true)
             {
                 yield return new WaitForSeconds(interval);
-                Transform target = targetPositions[nextPosition % targetPositions.Length];
-                nextPosition++;
-                transform.position = target.position;
-                attackCollider.radius = radius;
                 hitPlayers.Clear();
 
-                if (warningVisual != null)
+                for (int i = 0; i < targetPositions.Length; i++)
                 {
-                    warningVisual.position = target.position;
-                    warningVisual.localScale = new Vector3(radius * 2f, warningVisual.localScale.y, radius * 2f);
-                    warningVisual.gameObject.SetActive(true);
+                    attackColliders[i].center = transform.InverseTransformPoint(targetPositions[i].position);
+                    attackColliders[i].radius = radius;
+                    warningVisuals[i].position = targetPositions[i].position;
+                    warningVisuals[i].localScale = new Vector3(radius * 2f, warningVisuals[i].localScale.y, radius * 2f);
+                    warningVisuals[i].gameObject.SetActive(true);
                 }
 
                 float remaining = warningDuration;
@@ -73,11 +87,16 @@ namespace Study3D.MiniGolf
 
                 if (stageManager != null) stageManager.SetHeatCue(this, 0f);
                 isHot = true;
-                attackCollider.enabled = true;
+                foreach (SphereCollider attackCollider in attackColliders)
+                    attackCollider.enabled = true;
+                if (boss != null) boss.SetPatternAttacking(true);
                 yield return new WaitForSeconds(activeDuration);
                 isHot = false;
-                attackCollider.enabled = false;
-                if (warningVisual != null) warningVisual.gameObject.SetActive(false);
+                foreach (SphereCollider attackCollider in attackColliders)
+                    attackCollider.enabled = false;
+                if (boss != null) boss.SetPatternAttacking(false);
+                foreach (Transform visual in warningVisuals)
+                    visual.gameObject.SetActive(false);
             }
         }
 
@@ -86,13 +105,12 @@ namespace Study3D.MiniGolf
             if (!isHot) return;
             SnowballPlayer player = other.GetComponentInParent<SnowballPlayer>();
             if (player != null && hitPlayers.Add(player) && stageManager != null)
-                stageManager.HitByHeat(player, sizeLoss);
+                stageManager.HitByHeat(player);
         }
 
         public void ResetPattern()
         {
             StopPattern();
-            nextPosition = 0;
         }
     }
 }

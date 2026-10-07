@@ -154,4 +154,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowPickup
   growthAmount: 0.375
   canAbsorb: 1
-  landSpeed: 0.5

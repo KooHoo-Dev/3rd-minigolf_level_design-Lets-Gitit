@@ -14,7 +14,7 @@ namespace Study3D.MiniGolf
         public float interval = 12f;
         public float warningDuration = 2f;
         public float activeDuration = 3f;
-        public float sizeLoss = 0.35f;
+        public float sizeLoss = 0.175f;
 
         private readonly HashSet<SnowballPlayer> hitPlayers = new HashSet<SnowballPlayer>();
         private SphereCollider attackCollider;

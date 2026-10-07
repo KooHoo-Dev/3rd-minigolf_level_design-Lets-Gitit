@@ -152,6 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de985cf8be874f55b647da632e3969f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowPickup
-  growthAmount: 0.75
+  growthAmount: 0.375
   canAbsorb: 1
   landSpeed: 0.5

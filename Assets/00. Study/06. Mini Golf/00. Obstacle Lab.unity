@@ -3959,11 +3959,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b105e84761f41db8f8ff260ee7d45c7, type: 3}
   m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowballPlayer
-  initialSize: 1
-  minimumSize: 1
-  rollingGrowthLimit: 3
-  maximumSize: 8
-  growthPerMeter: 0.1
+  initialSize: 0.5
+  minimumSize: 0.5
+  rollingGrowthLimit: 1.5
+  maximumSize: 4
+  growthPerMeter: 0.05
   stageManager: {fileID: 4894006491121201699}
 --- !u!114 &5054767106596631954
 MonoBehaviour:

@@ -16,7 +16,7 @@ namespace Study3D.MiniGolf
         public float warningDuration = 2f;
         public float flightDuration = 1.5f;
         public float dropHeight = 8f;
-        public float growthAmount = 0.8f;
+        public float growthAmount = 0.4f;
         public int maximumActiveSnowballs = 5;
 
         private readonly List<SnowPickup> activeSnowballs = new List<SnowPickup>();

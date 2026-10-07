@@ -10,6 +10,7 @@ namespace Study3D.MiniGolf
         public float maximumHealth = 100f;
         public float damagePerSize = 20f;
         public float hitReactionDuration = 0.25f;
+        public float hitKnockbackSpeed = 8f;
         public float defeatedColorValue = 0.3f;
 
         private float health;
@@ -65,6 +66,9 @@ namespace Study3D.MiniGolf
 
             health = Mathf.Max(0f, health - player.Size * damagePerSize);
             player.ChangeSize(player.InitialSize - player.Size);
+            Vector3 knockbackDirection = player.Body.position - transform.position;
+            knockbackDirection.y = 0f;
+            player.Body.linearVelocity = knockbackDirection.normalized * hitKnockbackSpeed;
 
             if (hitSupply != null)
                 hitSupply.ThrowAfterBossHit();

@@ -45,13 +45,18 @@ namespace Study3D.MiniGolf
             {
                 slowTime += Time.fixedDeltaTime;
                 if (slowTime >= stopDelay)
-                {
-                    rBody.linearVelocity = Vector3.zero;
-                    rBody.angularVelocity = Vector3.zero;
-                }
+                    StopImmediately();
             }
             else
                 slowTime = 0;
+        }
+
+        private void StopImmediately()
+        {
+            rBody.linearVelocity = Vector3.zero;
+            rBody.angularVelocity = Vector3.zero;
+            shotRequested = false;
+            slowTime = stopDelay;
         }
 
         // 외부에서 Shoot함수를 호출하여 동작하도록 함수를 public으로 선언합니다

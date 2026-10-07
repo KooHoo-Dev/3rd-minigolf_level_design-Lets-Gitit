@@ -6,11 +6,11 @@ namespace Study3D.MiniGolf
     public class SnowballPlayer : MonoBehaviour
     {
         [Header("Size")]
-        public float initialSize = 1f;
-        public float minimumSize = 1f;
-        public float rollingGrowthLimit = 3f;
-        public float maximumSize = 8f;
-        public float growthPerMeter = 0.1f;
+        public float initialSize = 0.5f;
+        public float minimumSize = 0.5f;
+        public float rollingGrowthLimit = 1.5f;
+        public float maximumSize = 4f;
+        public float growthPerMeter = 0.05f;
         public SnowStageManager stageManager;
 
         private Rigidbody body;
@@ -43,7 +43,7 @@ namespace Study3D.MiniGolf
 
         private void FixedUpdate()
         {
-            if (touchedSnow && body.linearVelocity.sqrMagnitude > 0.01f)
+            if (touchedSnow && body.linearVelocity.sqrMagnitude > 0.01f && size < rollingGrowthLimit)
             {
                 float distance = Vector3.Distance(previousPosition, body.position);
                 SetSize(Mathf.Min(size + distance * growthPerMeter, rollingGrowthLimit), true);
@@ -94,6 +94,8 @@ namespace Study3D.MiniGolf
             float nextSize = Mathf.Clamp(value, minimumSize, maximumSize);
             if (Mathf.Approximately(size, nextSize)) return;
 
+            Vector3 velocity = body.linearVelocity;
+            Vector3 angularVelocity = body.angularVelocity;
             float previousRadius = baseRadius * size;
             size = nextSize;
             transform.localScale = initialScale * size;
@@ -103,8 +105,10 @@ namespace Study3D.MiniGolf
                 Vector3 position = body.position + Vector3.up * (baseRadius * size - previousRadius);
                 body.position = position;
                 transform.position = position;
+                body.angularVelocity = angularVelocity * previousRadius / (baseRadius * size);
             }
 
+            body.linearVelocity = velocity;
             previousPosition = body.position;
         }
 

@@ -5,7 +5,7 @@ namespace Study3D.MiniGolf
     public class SnowBreakable : MonoBehaviour
     {
         public bool canBreak = true;
-        public float requiredSize = 1.5f;
+        public float requiredSize = 0.75f;
         public float sizeCost;
         public GameObject breakEffect;
 

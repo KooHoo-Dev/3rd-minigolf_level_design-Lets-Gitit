@@ -601,6 +601,9 @@ Transform:
   - {fileID: 1112028711}
   - {fileID: 1132036852}
   - {fileID: 1411755693}
+  - {fileID: 2200000107}
+  - {fileID: 2200000108}
+  - {fileID: 2200000109}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &85587668
@@ -1057,7 +1060,7 @@ MonoBehaviour:
   warningDuration: 1.5
   flightDuration: 2.2
   dropHeight: 8
-  growthAmount: 2.8
+  growthAmount: 1.4
   maximumActiveSnowballs: 4
 --- !u!1 &174923967
 GameObject:
@@ -1230,8 +1233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
-  requiredSize: 3.5
-  sizeCost: 2.4
+  requiredSize: 1.75
+  sizeCost: 1.2
   breakEffect: {fileID: 0}
 --- !u!1 &199802731
 GameObject:
@@ -1288,7 +1291,7 @@ MonoBehaviour:
   interval: 11
   warningDuration: 2
   activeDuration: 2.5
-  sizeLoss: 0.42
+  sizeLoss: 0.21
 --- !u!135 &199802734
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1672,7 +1675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de985cf8be874f55b647da632e3969f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowPickup
-  growthAmount: 3.2
+  growthAmount: 1.6
   canAbsorb: 1
   landSpeed: 0.5
 --- !u!54 &326884576
@@ -1951,8 +1954,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
-  requiredSize: 3.2
-  sizeCost: 2.2
+  requiredSize: 1.6
+  sizeCost: 1.1
   breakEffect: {fileID: 0}
 --- !u!1 &341810994
 GameObject:
@@ -2433,8 +2436,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfPlayer
   minPower: 4
-  maxPower: 14
-  cycleTime: 1.2
+  maxPower: 16
+  cycleTime: 0.6
   ball: {fileID: 1968592124}
   aimIndicator: {fileID: 1037796489}
   stageManager: {fileID: 378638407}
@@ -2746,9 +2749,8 @@ GameObject:
   - component: {fileID: 413349878}
   - component: {fileID: 413349877}
   - component: {fileID: 413349876}
-  - component: {fileID: 413349875}
   m_Layer: 0
-  m_Name: Snow Growth Course
+  m_Name: Ground - No Growth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2769,18 +2771,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 921483696}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &413349875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413349873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b51d43e3f3d84c3ca1569e8dac88edb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowGrowthSurface
 --- !u!23 &413349876
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3144,7 +3134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
-  requiredSize: 1.45
+  requiredSize: 0.725
   sizeCost: 0
   breakEffect: {fileID: 0}
 --- !u!1 &434837823
@@ -4176,9 +4166,8 @@ GameObject:
   - component: {fileID: 573071157}
   - component: {fileID: 573071156}
   - component: {fileID: 573071155}
-  - component: {fileID: 573071154}
   m_Layer: 0
-  m_Name: Snow Growth Course
+  m_Name: Ground - No Growth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4199,18 +4188,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 57033090}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &573071154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573071152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b51d43e3f3d84c3ca1569e8dac88edb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowGrowthSurface
 --- !u!23 &573071155
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5455,8 +5432,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
-  requiredSize: 4
-  sizeCost: 2.8
+  requiredSize: 2
+  sizeCost: 1.4
   breakEffect: {fileID: 0}
 --- !u!1 &762506755
 GameObject:
@@ -5510,7 +5487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
-  requiredSize: 2
+  requiredSize: 1
   sizeCost: 0
   breakEffect: {fileID: 0}
 --- !u!1 &770793019
@@ -6125,6 +6102,9 @@ Transform:
   - {fileID: 1434359873}
   - {fileID: 2036835972}
   - {fileID: 1532705864}
+  - {fileID: 2200000101}
+  - {fileID: 2200000102}
+  - {fileID: 2200000103}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &902312204
@@ -6397,6 +6377,9 @@ Transform:
   - {fileID: 1272679676}
   - {fileID: 720637368}
   - {fileID: 326884574}
+  - {fileID: 2200000104}
+  - {fileID: 2200000105}
+  - {fileID: 2200000106}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &923197304
@@ -7153,7 +7136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfAimIndicator
   minLength: 0
-  maxLength: 0
+  maxLength: 6
 --- !u!120 &1037796490
 LineRenderer:
   serializedVersion: 3
@@ -7214,7 +7197,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.06
+        value: 0.18
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -7223,7 +7206,7 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.02
+        value: 0.06
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -8247,7 +8230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
-  requiredSize: 2
+  requiredSize: 1
   sizeCost: 0
   breakEffect: {fileID: 0}
 --- !u!1 &1140955579
@@ -9815,7 +9798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
-  requiredSize: 2.4
+  requiredSize: 1.2
   sizeCost: 0
   breakEffect: {fileID: 0}
 --- !u!1 &1412349165
@@ -10191,6 +10174,7 @@ MonoBehaviour:
   maximumHealth: 220
   damagePerSize: 18
   hitReactionDuration: 0.25
+  hitKnockbackSpeed: 8
   defeatedColorValue: 0.3
 --- !u!65 &1437906281
 BoxCollider:
@@ -10337,9 +10321,8 @@ GameObject:
   - component: {fileID: 1456718559}
   - component: {fileID: 1456718558}
   - component: {fileID: 1456718557}
-  - component: {fileID: 1456718556}
   m_Layer: 0
-  m_Name: Snow Growth Course
+  m_Name: Ground - No Growth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10360,18 +10343,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 855791970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1456718556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456718554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b51d43e3f3d84c3ca1569e8dac88edb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowGrowthSurface
 --- !u!23 &1456718557
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10847,7 +10818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
-  requiredSize: 2.5
+  requiredSize: 1.25
   sizeCost: 0
   breakEffect: {fileID: 0}
 --- !u!1 &1543467230
@@ -12166,7 +12137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7102319926783111207, guid: 346dcd12052e4ec6a0301eb6b5c55b83, type: 3}
       propertyPath: growthAmount
-      value: 3.2
+      value: 1.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12569,7 +12540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7102319926783111207, guid: 346dcd12052e4ec6a0301eb6b5c55b83, type: 3}
       propertyPath: growthAmount
-      value: 3.2
+      value: 1.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14858,8 +14829,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 204fcbf40a6676149947a1a5e378000c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfBall
-  stopSpeed: 0.1
-  stopDelay: 0.3
+  stopSpeed: 0.2
+  stopDelay: 0.05
   maxAngularSpeed: 150
 --- !u!4 &1968592125
 Transform:
@@ -14888,11 +14859,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b105e84761f41db8f8ff260ee7d45c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowballPlayer
-  initialSize: 1
-  minimumSize: 0.8
-  rollingGrowthLimit: 3
-  maximumSize: 8
-  growthPerMeter: 0.14
+  initialSize: 0.5
+  minimumSize: 0.4
+  rollingGrowthLimit: 1.5
+  maximumSize: 4
+  growthPerMeter: 0.07
   stageManager: {fileID: 378638407}
 --- !u!54 &1968592127
 Rigidbody:
@@ -14903,7 +14874,7 @@ Rigidbody:
   m_GameObject: {fileID: 1968592123}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 1
+  m_LinearDamping: 1.4
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -16096,7 +16067,7 @@ MonoBehaviour:
   warningDuration: 1.5
   flightDuration: 2.2
   dropHeight: 8
-  growthAmount: 2.8
+  growthAmount: 1.4
   maximumActiveSnowballs: 4
 --- !u!4 &2091661443
 Transform:
@@ -16203,6 +16174,276 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122562539}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &2200000001
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 855791970}
+    m_Modifications:
+    - target: {fileID: 710301001, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_Name
+      value: Growth Zone A
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+--- !u!4 &2200000101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2200000002
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 855791970}
+    m_Modifications:
+    - target: {fileID: 710301001, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_Name
+      value: Growth Zone B
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+--- !u!4 &2200000102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2200000003
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 855791970}
+    m_Modifications:
+    - target: {fileID: 710301001, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_Name
+      value: Growth Zone C
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+--- !u!4 &2200000103 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2200000004
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 921483696}
+    m_Modifications:
+    - target: {fileID: 710301001, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_Name
+      value: Growth Zone A
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+--- !u!4 &2200000104 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2200000005
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 921483696}
+    m_Modifications:
+    - target: {fileID: 710301001, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_Name
+      value: Growth Zone B
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+--- !u!4 &2200000105 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000005}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2200000006
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 921483696}
+    m_Modifications:
+    - target: {fileID: 710301001, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_Name
+      value: Growth Zone C
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+--- !u!4 &2200000106 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2200000007
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 57033090}
+    m_Modifications:
+    - target: {fileID: 710301001, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_Name
+      value: Growth Zone A
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 11.8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+--- !u!4 &2200000107 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2200000008
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 57033090}
+    m_Modifications:
+    - target: {fileID: 710301001, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_Name
+      value: Growth Zone B
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+--- !u!4 &2200000108 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2200000009
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 57033090}
+    m_Modifications:
+    - target: {fileID: 710301001, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_Name
+      value: Growth Zone C
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 33.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+--- !u!4 &2200000109 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 710301002, guid: a37e9d11c6524a9d8b945f022e1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 2200000009}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ namespace Study3D.MiniGolf
     [RequireComponent(typeof(Collider))]
     public class SnowPickup : MonoBehaviour
     {
-        public float growthAmount = 0.75f;
+        public float growthAmount = 0.375f;
         public bool canAbsorb = true;
         public float landSpeed = 0.5f;
 

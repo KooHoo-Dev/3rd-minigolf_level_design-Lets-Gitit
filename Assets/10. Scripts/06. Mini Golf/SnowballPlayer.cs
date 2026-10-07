@@ -137,7 +137,7 @@ namespace Study3D.MiniGolf
             {
                 Vector3 position = body.position + Vector3.up * (baseRadius * size - previousRadius);
                 body.position = position;
-                body.angularVelocity = angularVelocity * previousRadius / (baseRadius * size);
+                body.angularVelocity = Vector3.ClampMagnitude(angularVelocity * previousRadius / (baseRadius * size), golfBall.maxAngularSpeed);
             }
 
             body.linearVelocity = velocity;

@@ -32,7 +32,7 @@ namespace Study3D.MiniGolf
 
         public void TryRescue(SnowballPlayer player)
         {
-            if (rescued || !player.IsMoving || stageManager == null || !stageManager.CanShoot) return;
+            if (rescued || stageManager == null || !stageManager.CanShoot) return;
 
             if (penguinBody != null)
             {
@@ -52,8 +52,7 @@ namespace Study3D.MiniGolf
             rescued = true;
             if (penguinAnimator != null)
             {
-                penguinAnimator.ResetTrigger("Idle2");
-                penguinAnimator.SetTrigger("Jump");
+                penguinAnimator.Play("Jump_Emperor", 0, 0f);
             }
 
             if (penguinBody != null)
@@ -73,18 +72,21 @@ namespace Study3D.MiniGolf
             launchDirection = transform.forward;
             if (penguinBody != null)
             {
-                penguinBody.isKinematic = true;
+                penguinBody.isKinematic = false;
                 penguinBody.useGravity = false;
                 penguinBody.linearVelocity = Vector3.zero;
                 penguinBody.angularVelocity = Vector3.zero;
                 penguinBody.transform.localPosition = initialPenguinPosition;
                 penguinBody.transform.localRotation = initialPenguinRotation;
+                penguinBody.isKinematic = true;
             }
 
             if (penguinAnimator != null)
             {
                 penguinAnimator.ResetTrigger("Jump");
-                penguinAnimator.SetTrigger("Idle2");
+                penguinAnimator.ResetTrigger("Dead");
+                penguinAnimator.ResetTrigger("Idle2");
+                penguinAnimator.Play("Idle2_Emperor", 0, 0f);
             }
 
         }

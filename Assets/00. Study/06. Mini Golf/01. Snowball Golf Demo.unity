@@ -12908,7 +12908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.GolfBall
   stopSpeed: 0.2
   stopDelay: 0.05
-  maxAngularSpeed: 150
+  maxAngularSpeed: 8
 --- !u!4 &1968592125
 Transform:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ namespace Study3D.MiniGolf
         public bool canBreak = true;
         public bool preserveSpeedOnBreak;
         public float requiredSize = 0.75f;
+        public float minimumImpactSpeed = 3f;
         public float sizeCost;
         public GameObject breakEffect;
 
@@ -53,12 +54,13 @@ namespace Study3D.MiniGolf
 
         public void TryBreak(SnowballPlayer player, Vector3 velocityBeforeCollision)
         {
-            if (broken || !canBreak || player.Size < requiredSize) return;
+            Vector3 impactVelocity = Vector3.ProjectOnPlane(velocityBeforeCollision, Vector3.up);
+            if (broken || !canBreak || player.Size < requiredSize || impactVelocity.magnitude < minimumImpactSpeed) return;
 
             broken = true;
             player.ChangeSize(-sizeCost);
             if (preserveSpeedOnBreak)
-                player.Body.linearVelocity = Vector3.ProjectOnPlane(velocityBeforeCollision, Vector3.up);
+                player.Body.linearVelocity = impactVelocity;
 
             foreach (Collider obstacleCollider in obstacleColliders)
                 obstacleCollider.enabled = false;

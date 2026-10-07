@@ -12,7 +12,7 @@ namespace Study3D.MiniGolf
         public float stopDelay = 0.3f;
         // 공을 다이나믹으로 사용하기 때문에 게임적 표현을
         // 회전 스피드에 제한을 활용하여 간접적으로 제어 합니다.
-        public float maxAngularSpeed = 150f;
+        public float maxAngularSpeed = 8f;
 
         private Rigidbody rBody;
         private Vector3 lastPosition; // 유저가 마지막으로 공을 건드린 위치

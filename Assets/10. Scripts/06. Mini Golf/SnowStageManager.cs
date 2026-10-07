@@ -191,7 +191,7 @@ namespace Study3D.MiniGolf
             showHeatWarning = false;
             golfPlayer.ClearCharge();
 
-            foreach (SnowBreakable obstacle in stage.obstacles)
+            foreach (SnowBreakable obstacle in stage.stageRoot.GetComponentsInChildren<SnowBreakable>(true))
                 obstacle.ResetObstacle();
             foreach (SnowPickup pickup in stage.pickups)
                 pickup.ResetPickup();

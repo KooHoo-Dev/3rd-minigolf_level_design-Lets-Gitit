@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Study3D.MiniGolf.SnowBreakable
   canBreak: 1
   preserveSpeedOnBreak: 0
-  requiredSize: 0.75
+  requiredSize: 1.2
   minimumImpactSpeed: 3
-  sizeCost: 0
+  sizeCost: 0.4
   breakEffect: {fileID: 0}

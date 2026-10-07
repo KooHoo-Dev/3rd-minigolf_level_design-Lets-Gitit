@@ -6,6 +6,10 @@ namespace Study3D.MiniGolf
 {
     public class SnowBreakable : MonoBehaviour
     {
+        private static readonly int BaseColorProperty = Shader.PropertyToID("_BaseColor");
+        private static readonly int ColorProperty = Shader.PropertyToID("_Color");
+        private static readonly Color BreakableHighlightColor = new Color(1f, 0.78f, 0.05f);
+
         public bool canBreak = true;
         public bool preserveSpeedOnBreak;
         public float requiredSize = 0.75f;
@@ -17,6 +21,11 @@ namespace Study3D.MiniGolf
         private bool[] initialColliderStates;
         private Renderer[] obstacleRenderers;
         private bool[] initialRendererStates;
+        private Color[][] originalColors;
+        private int[][] colorProperties;
+        private MaterialPropertyBlock colorBlock;
+        private SnowballPlayer player;
+        private bool highlighted;
         private bool broken;
         private Vector3 initialScale;
         private Quaternion initialLocalRotation;
@@ -43,13 +52,36 @@ namespace Study3D.MiniGolf
 
             obstacleRenderers = GetComponentsInChildren<Renderer>(true);
             initialRendererStates = new bool[obstacleRenderers.Length];
+            originalColors = new Color[obstacleRenderers.Length][];
+            colorProperties = new int[obstacleRenderers.Length][];
+            colorBlock = new MaterialPropertyBlock();
             for (int i = 0; i < obstacleRenderers.Length; i++)
             {
                 initialRendererStates[i] = obstacleRenderers[i].enabled;
-                obstacleRenderers[i].material.color = preserveSpeedOnBreak
-                    ? new Color(1f, 0.78f, 0.05f)
-                    : new Color(0.45f, 0.23f, 0.1f);
+                Material[] materials = obstacleRenderers[i].sharedMaterials;
+                originalColors[i] = new Color[materials.Length];
+                colorProperties[i] = new int[materials.Length];
+                for (int j = 0; j < materials.Length; j++)
+                {
+                    int colorProperty = materials[j].HasProperty(BaseColorProperty)
+                        ? BaseColorProperty
+                        : materials[j].HasProperty(ColorProperty) ? ColorProperty : -1;
+                    colorProperties[i][j] = colorProperty;
+                    if (colorProperty != -1)
+                        originalColors[i][j] = materials[j].GetColor(colorProperty);
+                }
             }
+        }
+
+        private void Start()
+        {
+            player = FindFirstObjectByType<SnowballPlayer>();
+            UpdateBreakableHighlight();
+        }
+
+        private void Update()
+        {
+            UpdateBreakableHighlight();
         }
 
         public void TryBreak(SnowballPlayer player, Vector3 velocityBeforeCollision)
@@ -58,6 +90,7 @@ namespace Study3D.MiniGolf
             if (broken || !canBreak || player.Size < requiredSize || impactVelocity.magnitude < minimumImpactSpeed) return;
 
             broken = true;
+            SetHighlighted(false);
             player.ChangeSize(-sizeCost);
             if (preserveSpeedOnBreak)
                 player.Body.linearVelocity = impactVelocity;
@@ -83,11 +116,40 @@ namespace Study3D.MiniGolf
                 obstacleColliders[i].enabled = initialColliderStates[i];
             for (int i = 0; i < obstacleRenderers.Length; i++)
                 obstacleRenderers[i].enabled = initialRendererStates[i];
+            UpdateBreakableHighlight();
         }
 
         private void OnDisable()
         {
             StopBreakAnimation();
+        }
+
+        private void UpdateBreakableHighlight()
+        {
+            if (player == null)
+                player = FindFirstObjectByType<SnowballPlayer>();
+            if (player == null) return;
+
+            SetHighlighted(canBreak && !broken && player.Size >= requiredSize);
+        }
+
+        private void SetHighlighted(bool value)
+        {
+            if (highlighted == value) return;
+            highlighted = value;
+
+            for (int i = 0; i < obstacleRenderers.Length; i++)
+            {
+                for (int j = 0; j < colorProperties[i].Length; j++)
+                {
+                    int colorProperty = colorProperties[i][j];
+                    if (colorProperty == -1) continue;
+
+                    obstacleRenderers[i].GetPropertyBlock(colorBlock, j);
+                    colorBlock.SetColor(colorProperty, value ? BreakableHighlightColor : originalColors[i][j]);
+                    obstacleRenderers[i].SetPropertyBlock(colorBlock, j);
+                }
+            }
         }
 
         private void SpawnBreakDebris(Vector3 incomingVelocity)

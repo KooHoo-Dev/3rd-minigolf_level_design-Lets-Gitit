@@ -79,7 +79,7 @@ namespace Study3D.MiniGolf
             // 아래 내용과 LookAt 함수는 동일한 내용이 나옵니다.
             //Vector3 toTarget = (target.position - transform.position).normalized;
             //transform.rotation = Quaternion.LookRotation(toTarget, Vector3.up);
-            transform.LookAt(target);
+            transform.LookAt(trackedPoint);
         }
 
         public void SnapToTarget()

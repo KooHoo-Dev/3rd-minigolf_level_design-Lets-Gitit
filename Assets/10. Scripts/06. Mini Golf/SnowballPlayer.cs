@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Study3D.MiniGolf
@@ -24,6 +25,8 @@ namespace Study3D.MiniGolf
         private float size;
         private float baseRadius;
         private bool touchedSnow;
+        private Coroutine pickupGrowthRoutine;
+        private float pickupGrowthTarget;
 
         public float Size => size;
         public float InitialSize => initialSize;
@@ -47,7 +50,14 @@ namespace Study3D.MiniGolf
             if (touchedSnow && body.linearVelocity.sqrMagnitude > 0.01f && size < rollingGrowthLimit)
             {
                 float distance = Vector3.Distance(previousPosition, body.position);
-                SetSize(Mathf.Min(size + distance * growthPerMeter, rollingGrowthLimit), true);
+                float rollingGrowth = distance * growthPerMeter;
+                if (pickupGrowthRoutine != null)
+                {
+                    if (pickupGrowthTarget < rollingGrowthLimit)
+                        pickupGrowthTarget = Mathf.Min(pickupGrowthTarget + rollingGrowth, rollingGrowthLimit);
+                }
+                else
+                    SetSize(Mathf.Min(size + rollingGrowth, rollingGrowthLimit), true);
             }
 
             touchedSnow = false;
@@ -108,6 +118,7 @@ namespace Study3D.MiniGolf
 
         public void ChangeSize(float amount)
         {
+            StopPickupGrowth();
             SetSize(size + amount, true);
         }
 
@@ -126,7 +137,6 @@ namespace Study3D.MiniGolf
             {
                 Vector3 position = body.position + Vector3.up * (baseRadius * size - previousRadius);
                 body.position = position;
-                transform.position = position;
                 body.angularVelocity = angularVelocity * previousRadius / (baseRadius * size);
             }
 
@@ -136,6 +146,7 @@ namespace Study3D.MiniGolf
 
         public void ResetAt(Vector3 position)
         {
+            StopPickupGrowth();
             size = 0f;
             SetSize(initialSize, false);
             golfBall.PlaceAt(position);
@@ -146,6 +157,7 @@ namespace Study3D.MiniGolf
 
         public void RestoreLastShot()
         {
+            StopPickupGrowth();
             size = 0f;
             SetSize(lastShotSize, false);
             golfBall.PlaceAt(lastShotPosition);
@@ -160,8 +172,45 @@ namespace Study3D.MiniGolf
         {
             if (!pickup.CanAbsorb) return;
             if (stageManager != null && !stageManager.CanShoot) return;
-            ChangeSize(pickup.growthAmount);
+
+            float currentTarget = pickupGrowthRoutine != null ? pickupGrowthTarget : size;
+            float nextTarget = Mathf.Clamp(currentTarget + pickup.growthAmount, minimumSize, maximumSize);
+            StopPickupGrowth();
+            pickupGrowthTarget = nextTarget;
+            pickupGrowthRoutine = StartCoroutine(AnimatePickupGrowth());
             pickup.Absorb();
+        }
+
+        private IEnumerator AnimatePickupGrowth()
+        {
+            const float duration = 0.5f;
+            const float maxScaleStep = 0.1f;
+            float startingSize = size;
+            float elapsed = 0f;
+
+            while (true)
+            {
+                elapsed += Time.deltaTime;
+                float progress = Mathf.Clamp01(elapsed / duration);
+                float nextSize = Mathf.Lerp(startingSize, pickupGrowthTarget, progress);
+                SetSize(Mathf.MoveTowards(size, nextSize, maxScaleStep), true);
+
+                if (progress >= 1f && Mathf.Approximately(size, pickupGrowthTarget))
+                    break;
+
+                yield return null;
+            }
+
+            pickupGrowthRoutine = null;
+        }
+
+        private void StopPickupGrowth()
+        {
+            if (pickupGrowthRoutine == null) return;
+
+            StopCoroutine(pickupGrowthRoutine);
+            pickupGrowthRoutine = null;
+            pickupGrowthTarget = size;
         }
     }
 }
